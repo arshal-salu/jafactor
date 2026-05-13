@@ -31,12 +31,12 @@
         
         <div class="input-group">
           <label>Secondary Image URL</label>
-          <input v-model="form.image_url2" type="url" placeholder="https://...">
+          <input v-model="form.image_url_2" type="url" placeholder="https://...">
         </div>
         
         <div class="input-group">
           <label>Third Image URL</label>
-          <input v-model="form.image_url3" type="url" placeholder="https://...">
+          <input v-model="form.image_url_3" type="url" placeholder="https://...">
         </div>
       </div>
       
@@ -65,8 +65,8 @@ const form = reactive({
   stock_quantity: 0,
   description: '',
   image_url: '',
-  image_url2: '',
-  image_url3: ''
+  image_url_2: '',
+  image_url_3: ''
 })
 
 const handleSubmit = async () => {
@@ -90,8 +90,8 @@ const handleSubmit = async () => {
       stock_quantity: 0,
       description: '',
       image_url: '',
-      image_url2: '',
-      image_url3: ''
+      image_url_2: '',
+      image_url_3: ''
     })
   } catch (err) {
     message.value = `Error: ${err.message}`

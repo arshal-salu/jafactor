@@ -1,8 +1,8 @@
 <template>
   <div class="product-card">
-    <NuxtLink :to="`/products/${product.id}`" :class="['image-wrapper', { 'has-hover': product.image_url2 || product.image_url_2 }]">
+    <NuxtLink :to="`/products/${product.id}`" :class="['image-wrapper', { 'has-alt-hover': (product.image_url2 || product.image_url_2) && (product.image_url2 || product.image_url_2) !== product.image_url }]">
       <img :src="product.image_url" :alt="product.name" class="main-img">
-      <img v-if="product.image_url2 || product.image_url_2" :src="product.image_url2 || product.image_url_2" :alt="product.name" class="hover-img">
+      <img v-if="(product.image_url2 || product.image_url_2) && (product.image_url2 || product.image_url_2) !== product.image_url" :src="product.image_url2 || product.image_url_2" :alt="product.name" class="hover-img">
       <div class="card-overlay">
         <button @click.prevent="addToCart" class="quick-add">Quick Add</button>
       </div>
@@ -41,6 +41,7 @@ const addToCart = () => {
 }
 
 .image-wrapper {
+  display: block;
   position: relative;
   aspect-ratio: 3/4;
   overflow: hidden;
@@ -54,18 +55,33 @@ const addToCart = () => {
   transition: var(--transition-smooth);
 }
 
+.main-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .hover-img {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
 }
 
-.image-wrapper.has-hover:hover .main-img {
-  opacity: 0;
+.image-wrapper:hover .main-img {
+  transform: scale(1.05);
 }
 
-.image-wrapper.has-hover:hover .hover-img {
+.image-wrapper.has-alt-hover:hover .main-img {
+  opacity: 0;
+  transform: none;
+}
+
+.image-wrapper.has-alt-hover:hover .hover-img {
   opacity: 1;
   transform: scale(1.05);
 }
@@ -80,6 +96,7 @@ const addToCart = () => {
   transition: var(--transition-smooth);
   display: flex;
   justify-content: center;
+  z-index: 10;
 }
 
 .image-wrapper:hover .card-overlay {
