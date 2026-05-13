@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  /* Luxury Color Palette */
+  --color-primary: #c5a059; /* Antique Gold */
+  --color-primary-dark: #a68548;
+  --color-bg: #ffffff;
+  --color-bg-soft: #f9f9f9;
+  --color-text: #1a1a1a;
+  --color-text-muted: #666666;
+  --color-border: #eeeeee;
+  --color-overlay: rgba(0, 0, 0, 0.05);
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 5rem;
+  
+  /* Typography */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+  
+  /* Shadows & Glassmorphism */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  
+  /* Transitions */
+  --transition-smooth: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .font-serif {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  transition: var(--transition-smooth);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Premium Button Utility */
+.btn-primary {
+  background-color: var(--color-text);
+  color: #fff;
+  padding: 1rem 2.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  border: 1px solid var(--color-text);
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--color-text);
+}
+
+.btn-outline {
+  border: 1px solid var(--color-border);
+  padding: 0.8rem 1.5rem;
+  font-size: 0.85rem;
+}
+
+.btn-outline:hover {
+  border-color: var(--color-text);
+  background-color: var(--color-text);
+  color: #fff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  animation: fadeIn 0.8s var(--transition-smooth) forwards;
+}
