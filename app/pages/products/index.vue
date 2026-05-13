@@ -73,10 +73,10 @@ const sortedProducts = computed(() => {
     return list.sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0))
   }
   if (sortBy.value === 'price-low') {
-    return list.sort((a, b) => a.price - b.price)
+    return list.sort((a, b) => Number(a.price || 0) - Number(b.price || 0))
   }
   if (sortBy.value === 'price-high') {
-    return list.sort((a, b) => b.price - a.price)
+    return list.sort((a, b) => Number(b.price || 0) - Number(a.price || 0))
   }
   return list // default featured
 })
